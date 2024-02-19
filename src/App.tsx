@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import AddNewCountry from "./AddNewCountry";
+import {BrowserRouter as Router, Route, Link, Routes, Outlet} from 'react-router-dom';
+import HomePage from "./HomePage";
+import AddNewState from "./AddNewState";
 
-function App() {
+function App(){
+
+  HomePage();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+<Router>
 
+  <div>
+    <Link to="/">Home</Link>
+    <br></br>
+    <Link to="/add-new-country">Add Country</Link>
+    <br></br>
+    <Link to="/add-new-state">Add State</Link>
+    <Routes>
+      <Route path="/" element={<HomePage/>}/>
+      <Route path="/add-new-country" element={<AddNewCountry/>}/>
+      <Route path="/add-new-state" element={<AddNewState/>}/>
+    </Routes>
+  </div>
+</Router>
+  )
+};
 export default App;
